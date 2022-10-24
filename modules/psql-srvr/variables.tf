@@ -6,6 +6,14 @@ variable "rsrc_name" {
   type    = string
 }
 
+variable "vnet_id" {
+ 
+}
+
+variable "subnet_id" {
+
+}
+
 variable "dns_name" {
   type    = string
   default = "psql"
@@ -13,7 +21,7 @@ variable "dns_name" {
 
 variable "dbserver_name" {
   type    = string
-  default = "bucketv4"
+  default = "bucketv3"
 }
 
 variable "pg_admin" {

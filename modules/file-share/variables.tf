@@ -1,6 +1,6 @@
 variable "fshare_name" {
   type    = string
-  default = "share3"
+  default = "share2"
 }
 
 variable "strg_acc_name" {

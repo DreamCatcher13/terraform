@@ -15,6 +15,8 @@ module "psql" {
 
   rsrc_name = var.rsrc_name
   location  = var.location
+  vnet_id   = module.vnet.vnet_id
+  subnet_id = module.vnet.subnet_id
 }
 
 module "shared" {

@@ -5,6 +5,6 @@ variable "location" {
 
 variable "rsrc_name" {
   type    = string
-  default = "gitbucketv4"
+  default = "gitbucketv3"
 }
 

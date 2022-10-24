@@ -6,7 +6,7 @@ resource "azurerm_private_dns_zone" "mydns" {
 resource "azurerm_private_dns_zone_virtual_network_link" "mylink" {
   name                  = "exampleVnetZone.com"
   private_dns_zone_name = azurerm_private_dns_zone.mydns.name
-  virtual_network_id    = azurerm_virtual_network.myvnet.id
+  virtual_network_id    = var.vnet_id
   resource_group_name   = var.rsrc_name
 }
 
@@ -15,7 +15,7 @@ resource "azurerm_postgresql_flexible_server" "mydbserver" {
   resource_group_name     = var.rsrc_name
   location                = var.location
   version                 = 14
-  delegated_subnet_id     = azurerm_subnet.psqlsub.id
+  delegated_subnet_id     = var.subnet_id
   private_dns_zone_id     = azurerm_private_dns_zone.mydns.id
   administrator_login     = var.pg_admin
   administrator_password  = var.admin_pass
