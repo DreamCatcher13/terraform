@@ -71,14 +71,3 @@ resource "azurerm_postgresql_flexible_server_configuration" "ssloff" {
   value     = "off"
 }
 
-resource "azurerm_storage_share" "filesh" {
-  name                 = "share2"
-  storage_account_name = "rand"
-  quota                = 5
-}
-
-resource "azurerm_storage_share_directory" "dir" {
-  name                 = "bucket"
-  share_name           = azurerm_storage_share.filesh.name
-  storage_account_name = "rand" 
-}
