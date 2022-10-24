@@ -3,33 +3,6 @@ resource "azurerm_resource_group" "mygroup" {
   location = "North Europe"
 }
 
-resource "azurerm_virtual_network" "myvnet" {
-  name                = "ntwrk"
-  location            = azurerm_resource_group.mygroup.location
-  resource_group_name = azurerm_resource_group.mygroup.name
-  address_space       = ["10.0.26.0/24"]
-
-  subnet {
-    name           = "gitbucket"
-    address_prefix = "10.0.26.64/26"
-  }
-}
-
-resource "azurerm_subnet" "psqlsub" {
-  name                 = "pgsql"
-  resource_group_name  = azurerm_resource_group.mygroup.name
-  virtual_network_name = azurerm_virtual_network.myvnet.name
-  address_prefixes     = ["10.0.26.0/26"]
-  service_endpoints    = ["Microsoft.Storage"]
-  delegation {
-    name = "fs"
-    service_delegation {
-      name    = "Microsoft.DBforPostgreSQL/flexibleServers"
-      actions = ["Microsoft.Network/virtualNetworks/subnets/join/action"]
-    }  
-  }
-}
-
 resource "azurerm_private_dns_zone" "mydns" {
   name = "psql.postgres.database.azure.com"
   resource_group_name  = azurerm_resource_group.mygroup.name
