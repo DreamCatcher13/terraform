@@ -16,7 +16,7 @@ variable "subnet_id" {
 
 variable "dns_name" {
   type    = string
-  default = "psql"
+  default = "psql1337"
 }
 
 variable "dbserver_name" {

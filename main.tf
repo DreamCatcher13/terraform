@@ -26,11 +26,15 @@ module "shared" {
 module "app" {
   source = "./modules/app"
 
-  rsrc_name = var.rsrc_name 
-  location  = var.location
+  rsrc_name  = var.rsrc_name 
+  location   = var.location
   app_subnet = module.vnet.app_subnet
-  key
-  acc_name
-  share_name
-  dir
+  key        = module.shared.key
+  acc_name   = module.shared.acc_name
+  share_name = module.shared.share_name
+  home       = module.shared.dir
+  dns_name   = module.psql.dns_name
+  db_name    = module.psql.db_name
+  user       = module.psql.user 
+  pass       = module.psql.pass
 }
