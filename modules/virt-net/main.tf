@@ -3,11 +3,13 @@ resource "azurerm_virtual_network" "myvnet" {
   location            = var.location
   resource_group_name = var.rsrc_name
   address_space       = ["${var.vnet_addr}"]
+}
 
-  subnet {
-    name           = var.app_sub_name
-    address_prefix = var.app_pref
-  }
+resource  "azurerm_subnet" "appsub" {
+  name                 = var.app_sub_name
+  resource_group_name  = var.rsrc_name
+  virtual_network_name = var.vnet_name
+  address_prefixes     = ["${var.app_pref}"]
 }
 
 resource "azurerm_subnet" "psqlsub" {

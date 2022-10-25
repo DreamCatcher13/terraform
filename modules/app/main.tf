@@ -12,7 +12,19 @@ resource "azurerm_linux_web_app" "myapp" {
   location            = var.location
   service_plan_id     = azurerm_service_plan.myplan.id
 
-  site_config {}
+  site_config {
+
+    application_stack {
+      java_server         = var.jsrvr
+      java_version        = var.jver
+      java_server_version = var.jsver
+    }
+
+    virtual_network_subnet_id = var.app_subnet
+    vnet_route_all_enabled    = true
+
+    
+  }
 
 }
 

@@ -22,3 +22,9 @@ module "psql" {
 module "shared" {
   source = "./modules/file-share"
 }
+
+module "app" {
+  source = "./modules/app"
+
+  app_subnet = module.vnet.app_subnet
+}
