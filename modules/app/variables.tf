@@ -10,7 +10,19 @@ variable "app_subnet" {
 
 }
 
+variable "key" {
+  sensitive = true
+}
+
+variable "acc_name" {
+
+}
+
 variable "share_name" {
+
+}
+
+variable "home" {
 
 }
 
@@ -22,9 +34,6 @@ variable "db_name" {
 
 }
 
-variable "key" {
-  sensitive = true
-}
 
 variable "user"{
 
@@ -32,10 +41,6 @@ variable "user"{
 
 variable "pass" {
  sensitive = true
-}
-
-variable "home" {
-
 }
 
 variable "plan_name" {
