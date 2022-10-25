@@ -10,6 +10,12 @@ resource  "azurerm_subnet" "appsub" {
   resource_group_name  = var.rsrc_name
   virtual_network_name = var.vnet_name
   address_prefixes     = ["${var.app_pref}"]
+  delegation {
+    name = "del"
+    service_delegation {
+      name = "Microsoft.Web/serverFarms"
+    }
+  }
 }
 
 resource "azurerm_subnet" "psqlsub" {
