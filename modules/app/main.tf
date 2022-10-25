@@ -12,6 +12,8 @@ resource "azurerm_linux_web_app" "myapp" {
   location            = var.location
   service_plan_id     = azurerm_service_plan.myplan.id
 
+  virtual_network_subnet_id = var.app_subnet
+
   site_config {
 
     application_stack {
@@ -20,17 +22,24 @@ resource "azurerm_linux_web_app" "myapp" {
       java_server_version = var.jsver
     }
 
-    virtual_network_subnet_id = var.app_subnet
     vnet_route_all_enabled    = true
 
     app_settings = {
-      "GITBUCKET_HOME"        : "${var.home}"
+      "GITBUCKET_HOME"        : "/mnt/${var.home}"
       "GITBUCKET_DB_URL"      : "jdbc:postgresql://${var.dns_name}.postgres.database.azure.com:5432/${var.db_name}"
       "GITBUCKET_DB_USER"     : "${var.user}"
       "GITBUCKET_DB_PASSWORD" : "${var.pass}"
-    }
+    } 
   }
-
+  
+  storage_account {
+    access_key   = var.key
+    account_name = var.acc_name
+    name         = "my_storage"
+    share_name   = var.share_name
+    type         = AzureFiles
+    mount_path   = "/mnt"
+  }   
 }
 
 
