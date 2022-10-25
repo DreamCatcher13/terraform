@@ -2,7 +2,7 @@ output "vnet_id" {
  value = azurerm_virtual_network.myvnet.id
 }
 
-output "subnet_id" {
+output "psql_subnet" {
   value = azurerm_subnet.psqlsub.id
 }
 

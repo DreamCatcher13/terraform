@@ -23,7 +23,12 @@ resource "azurerm_linux_web_app" "myapp" {
     virtual_network_subnet_id = var.app_subnet
     vnet_route_all_enabled    = true
 
-    
+    app_settings = {
+      "GITBUCKET_HOME"        : "${var.home}"
+      "GITBUCKET_DB_URL"      : "jdbc:postgresql://${var.dns_name}.postgres.database.azure.com:5432/${var.db_name}"
+      "GITBUCKET_DB_USER"     : "${var.user}"
+      "GITBUCKET_DB_PASSWORD" : "${var.pass}"
+    }
   }
 
 }

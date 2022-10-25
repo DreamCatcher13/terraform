@@ -9,7 +9,26 @@ variable "location" {
 variable "app_subnet" {
 
 }
+variable "share_name" {
 
+}
+variable "dns_name" {
+
+}
+variable "db_name" {
+
+}
+
+variable "key" {
+
+}
+variable "user"{
+
+}
+
+variable "pass" {
+ sensitive = true
+}
 variable "plan_name" {
   type    = string
   default = "appGitbucketServicePlan"
@@ -45,3 +64,7 @@ variable "jsver" {
   default = 9
 }
 
+variable "home" {
+  type = string
+  default = "/mnt
+}
