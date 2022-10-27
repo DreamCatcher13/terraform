@@ -17,16 +17,16 @@ resource "azurerm_linux_web_app" "myapp" {
   site_config {
 
     application_stack {
-      java_server         = var.jsrvr
-      java_version        = var.jver
-      java_server_version = var.jsver
+      java_server         = "TOMCAT"
+      java_version        = "java11"
+      java_server_version = "9.0"
     }
 
     vnet_route_all_enabled    = true
   }
   app_settings = {
     "GITBUCKET_HOME"        : "/mnt/${var.home}"
-    "GITBUCKET_DB_URL"      : "jdbc:postgresql://${var.dns_name}.postgres.database.azure.com:5432/${var.db_name}"
+    "GITBUCKET_DB_URL"      : "jdbc:postgresql://${var.dbs_name}.postgres.database.azure.com:5432/${var.db_name}"
     "GITBUCKET_DB_USER"     : "${var.user}"
     "GITBUCKET_DB_PASSWORD" : "${var.pass}"
   } 

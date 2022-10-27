@@ -23,21 +23,20 @@ variable "share_name" {
 }
 
 variable "home" {
+ 
+}
+
+variable  "dbs_name" {
 
 }
 
-variable "dns_name" {
+variable  "db_name" {
 
 }
 
-variable "db_name" {
+variable  "user" {
 
-}
-
-
-variable "user"{
-
-}
+}  
 
 variable "pass" {
  sensitive = true
@@ -63,18 +62,4 @@ variable "app_name" {
   default = "another-gitbucket"
 }
 
-variable "jsrvr" {
-  type    = string
-  default = "TOMCAT"
-}
-
-variable "jver" {
-  type    = string
-  default = "java11"
-}
-
-variable "jsver" {
-  type    = number
-  default = 9
-}
 

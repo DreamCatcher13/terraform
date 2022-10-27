@@ -1,5 +1,5 @@
-output "dns_name" {
-  value = var.dns_name
+output "dbs_name" {
+  value = var.dbserver_name
 }
 
 output "db_name" {

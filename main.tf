@@ -33,8 +33,8 @@ module "app" {
   acc_name   = module.shared.acc_name
   share_name = module.shared.share_name
   home       = module.shared.dir
-  dns_name   = module.psql.dns_name
+  dbs_name   = module.psql.dbs_name
   db_name    = module.psql.db_name
   user       = module.psql.user 
-  pass       = module.psql.pass
+  pass                      = module.psql.pass
 }

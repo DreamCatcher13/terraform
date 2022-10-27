@@ -10,10 +10,12 @@ resource  "azurerm_subnet" "appsub" {
   resource_group_name  = var.rsrc_name
   virtual_network_name = var.vnet_name
   address_prefixes     = ["${var.app_pref}"]
+  service_endpoints    = ["Microsoft.Storage"]
   delegation {
     name = "del"
     service_delegation {
       name = "Microsoft.Web/serverFarms"
+      actions = ["Microsoft.Network/virtualNetworks/subnets/join/action"]
     }
   }
 }
