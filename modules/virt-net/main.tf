@@ -8,7 +8,7 @@ resource "azurerm_virtual_network" "myvnet" {
 resource  "azurerm_subnet" "appsub" {
   name                 = var.app_sub_name
   resource_group_name  = var.rsrc_name
-  virtual_network_name = var.vnet_name
+  virtual_network_name = azurerm_virtual_network.myvnet.name
   address_prefixes     = ["${var.app_pref}"]
   service_endpoints    = ["Microsoft.Storage"]
   delegation {
@@ -23,7 +23,7 @@ resource  "azurerm_subnet" "appsub" {
 resource "azurerm_subnet" "psqlsub" {
   name                 = var.db_sub_name
   resource_group_name  = var.rsrc_name
-  virtual_network_name = var.vnet_name
+  virtual_network_name = azurerm_virtual_network.myvnet.name
   address_prefixes     = ["${var.pg_pref}"]
   service_endpoints    = ["Microsoft.Storage"]
   delegation {
