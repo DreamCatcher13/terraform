@@ -31,6 +31,7 @@ variable "pg_admin" {
 
 variable "admin_pass" {
   type      = string
+  default   = "p@ssw0rd"
   sensitive = true
 }
 

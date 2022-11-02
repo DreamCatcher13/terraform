@@ -17,7 +17,6 @@ module "psql" {
   location   = azurerm_resource_group.mygroup.location
   vnet_id    = module.vnet.vnet_id
   subnet_id  = module.vnet.psql_subnet
-  admin_pass = var.admin_pass
 }
 
 module "shared" {
@@ -32,11 +31,11 @@ module "app" {
   app_subnet = module.vnet.app_subnet
   key        = module.shared.key
   acc_name   = module.shared.acc_name
-  share_name = module.shared.share_name
-  home       = module.shared.dir
-  dbs_name   = module.psql.dbs_name
-  db_name    = module.psql.db_name
-  user       = module.psql.user 
-  pass       = module.psql.pass
+  share_name = module.shared.azurerm_storage_share.filesh.name
+  home       = module.shared.azurerm_storage_share_directory.dir.name
+  dbs_name   = module.psql.azurerm_postgresql_flexible_server.mydbserver.name
+  db_name    = module.psql.azurerm_postgresql_flexible_server_database.mydb.name
+  user       = module.psql.azurerm_postgresql_flexible_server.mydbserver.administrator_login 
+  pass       = module.psql.azurerm_postgresql_flexible_server.mydbserver.administrator_password
 }
 
