@@ -13,10 +13,11 @@ module "vnet" {
 module "psql" {
   source = "./modules/psql-srvr"
 
-  rsrc_name = azurerm_resource_group.mygroup.name 
-  location  = azurerm_resource_group.mygroup.location
-  vnet_id   = module.vnet.vnet_id
-  subnet_id = module.vnet.psql_subnet
+  rsrc_name  = azurerm_resource_group.mygroup.name 
+  location   = azurerm_resource_group.mygroup.location
+  vnet_id    = module.vnet.vnet_id
+  subnet_id  = module.vnet.psql_subnet
+  admin_pass = var.admin_pass
 }
 
 module "shared" {
@@ -38,3 +39,4 @@ module "app" {
   user       = module.psql.user 
   pass       = module.psql.pass
 }
+

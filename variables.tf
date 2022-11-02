@@ -8,3 +8,8 @@ variable "rsrc_name" {
   default = "gitbucketv3"
 }
 
+variable "admin_pass" {
+  type      = string
+  sensitive = true
+}
+

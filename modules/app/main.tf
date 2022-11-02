@@ -39,6 +39,16 @@ resource "azurerm_linux_web_app" "myapp" {
     type         = "AzureFiles"
     mount_path   = "/mnt"
   }   
+
+  provisioner "local-exec" {
+    command = "az webapp stop --name ${azurerm_linux_web_app.myapp.name} --resource-group ${var.rsrc_name}"
+  }
+
+  provisioner "local-exec" {
+    command = "az webapp start --name ${azurerm_linux_web_app.myapp.name} --resource-group ${var.rsrc_name}"
+  }
+
+
 }
 
 
