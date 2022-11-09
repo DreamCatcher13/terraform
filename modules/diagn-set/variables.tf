@@ -1,31 +1,12 @@
-variable "lg_name" {
-  type    = string
-  default = "gitbucket-log-space"
-}
-
-variable "location" {
-  type = string
-}
-
-variable "rsrc" {
-  type = string
-}
-
-variable "sku" {
-  type    = string
-  default = "PerGB2018"
-}
-
-variable "ret" {
-  type    = number
-  default = 30
-}
-
 variable "psql_id" {
 
 }
 
 variable "app_id" {
+
+}
+
+variable "log_id" {
 
 }
 

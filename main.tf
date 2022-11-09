@@ -24,6 +24,14 @@ module "shared" {
   source = "./modules/file-share"
 }
 
+module "insights" {
+  source = "./modules/app-in"
+  
+  rsrc       = azurerm_resource_group.mygroup.name 
+  location   = azurerm_resource_group.mygroup.location
+ 
+}
+
 module "app" {
   source = "./modules/app"
 
@@ -42,9 +50,8 @@ module "app" {
 
 module "diagnostic" {
   source = "./modules/diagn-set"
-  
-  rsrc      = azurerm_resource_group.mygroup.name 
-  location  = azurerm_resource_group.mygroup.location
+ 
+  log_id    = module.insights.log_id
   psql_id   = module.psql.psql_id
   app_id    = module.app.app_id
 }
