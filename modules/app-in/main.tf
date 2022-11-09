@@ -11,5 +11,5 @@ resource "azurerm_application_insights" "app_ins" {
   location            = var.location
   resource_group_name = var.rsrc
   workspace_id        = azurerm_log_analytics_workspace.log_space.id
-  application_type    = "java"
+  application_type    = "web"
 }

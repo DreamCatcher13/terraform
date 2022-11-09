@@ -14,6 +14,15 @@ variable "key" {
   sensitive = true
 }
 
+variable "inst_k" {
+  sensitive = true
+}
+
+variable "conn_strg" {
+  sensitive = true
+}
+
+
 variable "acc_name" {
 
 }

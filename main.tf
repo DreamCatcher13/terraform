@@ -29,7 +29,6 @@ module "insights" {
   
   rsrc       = azurerm_resource_group.mygroup.name 
   location   = azurerm_resource_group.mygroup.location
- 
 }
 
 module "app" {
@@ -46,6 +45,8 @@ module "app" {
   db_name    = module.psql.db_name
   user       = module.psql.user 
   pass       = module.psql.pass
+  inst_k     = module.insights.inst_k
+  conn_strg  = module.insights.conn_strg
 }
 
 module "diagnostic" {

@@ -6,7 +6,7 @@ output "inst_k" {
   value = azurerm_application_insights.app_ins.instrumentation_key
 }
 
-output "conn_str" {
+output "conn_strg" {
   value = azurerm_application_insights.app_ins.connection_string
 }
 

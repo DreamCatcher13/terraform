@@ -25,3 +25,4 @@ variable "ins_name" {
   type = string
   default = "gitbucket-insights"
 }
+
