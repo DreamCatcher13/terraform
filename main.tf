@@ -40,3 +40,11 @@ module "app" {
   pass       = module.psql.pass
 }
 
+module "diagnostic" {
+  source = "./modules/diagn-set"
+  
+  rsrc      = azurerm_resource_group.mygroup.name 
+  location  = azurerm_resource_group.mygroup.location
+  psql_id   = module.psql.psql_id
+  app_id    = module.app.app_id
+}

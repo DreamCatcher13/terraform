@@ -13,3 +13,7 @@ output "user" {
 output "pass" {
   value = var.admin_pass
 }
+
+output "psql_id" {
+  value = azurerm_postgresql_flexible_server.mydbserver.id
+}
