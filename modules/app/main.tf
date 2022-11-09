@@ -29,8 +29,6 @@ resource "azurerm_linux_web_app" "myapp" {
     "GITBUCKET_DB_URL"                      : "jdbc:postgresql://${var.dbs_name}.postgres.database.azure.com:5432/${var.db_name}"
     "GITBUCKET_DB_USER"                     : "${var.user}"
     "GITBUCKET_DB_PASSWORD"                 : "${var.pass}"
-    "APPINSIGHTS_INSTRUMENTATIONKEY"        : "${var.inst_k}"
-    "APPLICATIONINSIGHTS_CONNECTION_STRING" : "${var.conn_strg}"
   } 
   
   storage_account {

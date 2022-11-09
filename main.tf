@@ -45,8 +45,6 @@ module "app" {
   db_name    = module.psql.db_name
   user       = module.psql.user 
   pass       = module.psql.pass
-  inst_k     = module.insights.inst_k
-  conn_strg  = module.insights.conn_strg
 }
 
 module "diagnostic" {
@@ -55,4 +53,12 @@ module "diagnostic" {
   log_id    = module.insights.log_id
   psql_id   = module.psql.psql_id
   app_id    = module.app.app_id
+  vnet_id   = module.vnet.vnet_id
+}
+
+module "alert" {
+  source = "./modules/alert"
+  
+  rsrc   = azurerm_resource_group.mygroup.name 
+  app_id = module.app.app_id 
 }
